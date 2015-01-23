@@ -3,10 +3,10 @@ package org.usfirst.frc.team1899.robot.subsystems;
 import edu.wpi.first.wpilibj.command.Subsystem;
 import edu.wpi.first.wpilibj.SpeedController;
 import edu.wpi.first.wpilibj.Talon;
-import edu.wpi.first.wpilibj.Joystick;
+//import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.RobotDrive;
 
-import org.usfirst.frc.team1899.robot.OI;
+//import org.usfirst.frc.team1899.robot.OI;
 import org.usfirst.frc.team1899.robot.Robot;
 import org.usfirst.frc.team1899.robot.RobotMap;
 import org.usfirst.frc.team1899.robot.commands.DriveCommand;
@@ -38,8 +38,11 @@ public class DriveSubsystem extends Subsystem {
     			//m_driveStick->SetAxisChannel(Joystick::kTwistAxis, 3);
     }
     
-    public void setMecanumDrive(double magnitude, double direction, double rotation) {
+    public void setMecanumDrive(double kX, double kY, double rotation) {
     	int gyroAngle = 0;
+    	//THIS DOESN'T MAKE SENSE WE ARE GETTING VALUES AND THEN SETTING AND THEN GETTING AGAIN...FIX THIS
+    		//kX is get value x of driveStick, kY is y of driveStick, and rotation is y of driveStick2 (helicopter style)
     	robotDrive.mecanumDrive_Cartesian(Robot.oi.getAxisValue(1), Robot.oi.getAxisValue(2), rotation, gyroAngle);
+    	//CHECK HOW WE DID IT IN THE PAST...OR AT LEAST ON THE TSHIRT CANNON
     }
 }
