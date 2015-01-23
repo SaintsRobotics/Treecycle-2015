@@ -6,6 +6,8 @@ import edu.wpi.first.wpilibj.Talon;
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.RobotDrive;
 
+import org.usfirst.frc.team1899.robot.OI;
+import org.usfirst.frc.team1899.robot.Robot;
 import org.usfirst.frc.team1899.robot.RobotMap;
 import org.usfirst.frc.team1899.robot.commands.DriveCommand;
 
@@ -37,6 +39,7 @@ public class DriveSubsystem extends Subsystem {
     }
     
     public void setMecanumDrive(double magnitude, double direction, double rotation) {
-    	robotDrive.mecanumDrive_Cartesian(getAxisValue(driveStick.kX), getAxis(drivestick.kY), rotation, gyroAngle);
+    	int gyroAngle = 0;
+    	robotDrive.mecanumDrive_Cartesian(Robot.oi.getAxisValue(1), Robot.oi.getAxisValue(2), rotation, gyroAngle);
     }
 }
