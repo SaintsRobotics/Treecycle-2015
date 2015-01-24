@@ -22,7 +22,7 @@ public class OI {
 		if(axis == 2)
 			return driveStick.getY();
 		if(axis == 3)
-			return driveStick.getZ();
+			return driveStick2.getY();
 		return 0;
 		//return axis;
 	}

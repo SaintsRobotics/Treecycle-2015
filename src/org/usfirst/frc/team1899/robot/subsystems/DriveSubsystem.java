@@ -38,10 +38,11 @@ public class DriveSubsystem extends Subsystem {
     			//m_driveStick->SetAxisChannel(Joystick::kTwistAxis, 3);
     }
     
-    public void setMecanumDrive(double kX, double kY, double rotation) {
+    public void setMecanumDrive() {
+    	//double kX, double kY, double rotation
     	int gyroAngle = 0;
-    	//THIS DOESN'T MAKE SENSE WE ARE GETTING VALUES AND THEN SETTING AND THEN GETTING AGAIN...FIX THIS
     		//kX is get value x of driveStick, kY is y of driveStick, and rotation is y of driveStick2 (helicopter style)
+    	double rotation = Robot.oi.getAxisValue(3);
     	robotDrive.mecanumDrive_Cartesian(Robot.oi.getAxisValue(1), Robot.oi.getAxisValue(2), rotation, gyroAngle);
     	//CHECK HOW WE DID IT IN THE PAST...OR AT LEAST ON THE TSHIRT CANNON
     }
