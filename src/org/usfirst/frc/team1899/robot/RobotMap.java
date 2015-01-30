@@ -8,8 +8,8 @@ package org.usfirst.frc.team1899.robot;
  */
 public class RobotMap {
 	
-    public static final int MOTOR_RIGHT_1 = 1;
-    public static final int MOTOR_RIGHT_2 = 2;
-    public static final int MOTOR_LEFT_1 = 3;
-    public static final int MOTOR_LEFT_2 = 4;
+    public static final int MOTOR_FRONT_LEFT = 1;
+    public static final int MOTOR_REAR_LEFT = 2;
+    public static final int MOTOR_FRONT_RIGHT = 3;
+    public static final int MOTOR_REAR_RIGHT = 4;
 }

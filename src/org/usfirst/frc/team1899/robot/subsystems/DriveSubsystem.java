@@ -1,8 +1,6 @@
 package org.usfirst.frc.team1899.robot.subsystems;
 
 import edu.wpi.first.wpilibj.command.Subsystem;
-import edu.wpi.first.wpilibj.SpeedController;
-import edu.wpi.first.wpilibj.Talon;
 import edu.wpi.first.wpilibj.RobotDrive;
 
 import org.usfirst.frc.team1899.robot.OI.Axis;
@@ -12,13 +10,10 @@ import org.usfirst.frc.team1899.robot.RobotMap;
 import org.usfirst.frc.team1899.robot.commands.DriveCommand;
 
 public class DriveSubsystem extends Subsystem {
-    
-	SpeedController right1 = new Talon(RobotMap.MOTOR_RIGHT_1);
-    SpeedController right2 = new Talon(RobotMap.MOTOR_RIGHT_2);
-    SpeedController left1 = new Talon(RobotMap.MOTOR_LEFT_1);
-    SpeedController left2 = new Talon(RobotMap.MOTOR_LEFT_2);
 	
-	RobotDrive robotDrive = new RobotDrive(1, 2, 3, 4);
+	RobotDrive robotDrive = new RobotDrive(
+			RobotMap.MOTOR_FRONT_LEFT, RobotMap.MOTOR_REAR_LEFT,
+			RobotMap.MOTOR_FRONT_RIGHT, RobotMap.MOTOR_REAR_RIGHT);
 
     public void initDefaultCommand() {
     	setDefaultCommand(new DriveCommand());
