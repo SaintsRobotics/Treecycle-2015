@@ -3,9 +3,6 @@ package org.usfirst.frc.team1899.robot.subsystems;
 import edu.wpi.first.wpilibj.command.Subsystem;
 import edu.wpi.first.wpilibj.RobotDrive;
 
-import org.usfirst.frc.team1899.robot.OI.Axis;
-import org.usfirst.frc.team1899.robot.OI.Stick;
-import org.usfirst.frc.team1899.robot.Robot;
 import org.usfirst.frc.team1899.robot.RobotMap;
 import org.usfirst.frc.team1899.robot.commands.DriveCommand;
 
@@ -19,10 +16,7 @@ public class DriveSubsystem extends Subsystem {
     	setDefaultCommand(new DriveCommand());
     }
     
-    public void setMecanumDrive(double kX, double kY, double rotation) {
-    	robotDrive.mecanumDrive_Cartesian(
-    			Robot.oi.getAxisValue(Stick.DRIVE_1, Axis.X),
-    			Robot.oi.getAxisValue(Stick.DRIVE_1, Axis.Y),
-    			Robot.oi.getAxisValue(Stick.DRIVE_2, Axis.Y), 0);
+    public void setMecanumDrive(double x, double y, double rotation, double gyro) {
+    	robotDrive.mecanumDrive_Cartesian(x, y, rotation, gyro);
     }
 }
