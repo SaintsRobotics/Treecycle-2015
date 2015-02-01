@@ -15,10 +15,10 @@ public class DriveCommand extends Command {
 
     protected void execute() {
     	Robot.driveSubsystem.setMecanumDrive(
-    			Robot.oi.getAxisValue(Stick.DRIVE_1, Axis.X),
     			Robot.oi.getAxisValue(Stick.DRIVE_1, Axis.Y),
-    			Robot.oi.getAxisValue(Stick.DRIVE_2, Axis.Y), 0);
-    }
+    			Robot.oi.getAxisValue(Stick.DRIVE_1, Axis.X),
+    			Robot.oi.getAxisValue(Stick.DRIVE_2, Axis.X), 0);
+    }	
 
     protected boolean isFinished() {
         return false;
