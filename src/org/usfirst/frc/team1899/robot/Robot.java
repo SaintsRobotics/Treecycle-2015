@@ -6,6 +6,7 @@ import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.livewindow.LiveWindow;
 
 import org.usfirst.frc.team1899.robot.subsystems.DriveSubsystem;
+import org.usfirst.frc.team1899.robot.subsystems.LifterSubsystem;
 
 /**
  * The VM is configured to automatically run this class, and to call the
@@ -16,23 +17,25 @@ import org.usfirst.frc.team1899.robot.subsystems.DriveSubsystem;
  */
 public class Robot extends IterativeRobot {
 
-	public static DriveSubsystem driveSubsystem;
-	public static OI oi;
+    public static DriveSubsystem driveSubsystem;
+    public static LifterSubsystem lifterSubsystem;
+    public static OI oi;
 
     public void robotInit() {
-    	driveSubsystem = new DriveSubsystem();
-		oi = new OI();
+        driveSubsystem = new DriveSubsystem();
+        lifterSubsystem = new LifterSubsystem();
+        oi = new OI();
     }
     
     public void autonomousInit() { }
     public void teleopInit() { }
     public void disabledInit() { }
     
-	public void disabledPeriodic() {
-		Scheduler.getInstance().run();
-	}
-	
-	public void teleopPeriodic() {
+    public void disabledPeriodic() {
+        Scheduler.getInstance().run();
+    }
+    
+    public void teleopPeriodic() {
         Scheduler.getInstance().run();
     }
 

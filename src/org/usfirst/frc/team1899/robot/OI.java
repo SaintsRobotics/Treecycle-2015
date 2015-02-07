@@ -16,7 +16,7 @@ public class OI {
     }
     
     public enum Axis {
-        X, Y, Z;
+        X, Y, Z, LX, LY, RX, RY, LT, RT, TRIGGERS;
     }
     
     public double getAxisValue(Stick stick, Axis axis) {
@@ -32,15 +32,40 @@ public class OI {
                 return 0;
         }
         
+        double val = 0;
         switch (axis) {
             case X:
-                return joystick.getX();
+                val = joystick.getX();
+                break;
             case Y:
-                return joystick.getY();
+                val = joystick.getY();
+                break;
             case Z:
-                return joystick.getZ();
+                val = joystick.getZ();
+                break;
+            case LX:
+                val = joystick.getRawAxis(0);
+                break;
+            case LY:
+                val = joystick.getRawAxis(1);
+                break;
+            case LT:
+                val = joystick.getRawAxis(2);
+                break;
+            case RT:
+                val = joystick.getRawAxis(3);
+                break;
+            case RX:
+                val = joystick.getRawAxis(4);
+                break;
+            case RY:
+                val = joystick.getRawAxis(5);
+                break;
+            case TRIGGERS:
+                val = joystick.getRawAxis(3) - joystick.getRawAxis(2);
+                break;
         }
         
-        return 0;
+        return Math.abs(val) < 0.13 ? 0 : val;
     }
 }
