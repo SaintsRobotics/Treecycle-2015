@@ -13,8 +13,7 @@ public class TalonMotor {
     }
     
     public void set(double val) {
-        ramp.set(val);
-        val = ramp.get();
+        val = ramp.set(val);
         talon.set(val);
     }
 }

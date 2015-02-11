@@ -9,8 +9,9 @@ public class Ramp {
         this.ratio = ratio;
     }
     
-    public void set(double newValue) {
-        targetValue = newValue; 
+    public double set(double newValue) {
+        targetValue = newValue;
+        return get();
     }
     
     public double get() {
