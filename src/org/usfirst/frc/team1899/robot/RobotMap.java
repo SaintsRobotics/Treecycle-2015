@@ -17,8 +17,8 @@ public class RobotMap {
     public static final int LEFT_WING = 5;
     public static final int RIGHT_WING = 6;
     
-	public static final int SWITCH_TOP = 0;
-	public static final int SWITCH_BOTTOM = 1;
+    public static final int SWITCH_TOP = 0;
+    public static final int SWITCH_BOTTOM = 1;
 }
 
 // Front Left and Back Right are physically swapped on the robot.

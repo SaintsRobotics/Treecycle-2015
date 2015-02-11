@@ -26,10 +26,10 @@ public class LifterSubsystem extends Subsystem {
     }
     
     public void lift(double amount) {
-    	if (!topSwitch.get() && amount>0)
-			motor.set(0);
-    	else if (!bottomSwitch.get() && amount<0)
-			motor.set(0);
-    	else motor.set(amount);
+        if (!topSwitch.get() && amount>0)
+            motor.set(0);
+        else if (!bottomSwitch.get() && amount<0)
+            motor.set(0);
+        else motor.set(amount);
     }
 }
