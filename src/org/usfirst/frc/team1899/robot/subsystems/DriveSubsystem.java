@@ -1,6 +1,7 @@
 package org.usfirst.frc.team1899.robot.subsystems;
 
 import org.usfirst.frc.team1899.robot.RobotMap;
+import org.usfirst.frc.team1899.robot.commands.JoystickDriveCommand;
 import org.usfirst.frc.team1899.robot.commands.XboxDriveCommand;
 
 import edu.wpi.first.wpilibj.RobotDrive;
@@ -13,7 +14,7 @@ public class DriveSubsystem extends Subsystem {
             RobotMap.MOTOR_FRONT_RIGHT, RobotMap.MOTOR_REAR_RIGHT);
 
     public void initDefaultCommand() {
-        setDefaultCommand(new XboxDriveCommand());
+        setDefaultCommand(new JoystickDriveCommand());
     }
     
     public void setMecanumDrive(double x, double y, double rotation, double gyro) {
