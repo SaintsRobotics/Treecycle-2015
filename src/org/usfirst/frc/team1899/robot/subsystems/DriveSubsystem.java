@@ -1,16 +1,12 @@
 package org.usfirst.frc.team1899.robot.subsystems;
 
-import edu.wpi.first.wpilibj.command.Subsystem;
-import edu.wpi.first.wpilibj.SpeedController;
-import edu.wpi.first.wpilibj.Talon;
-//import edu.wpi.first.wpilibj.Joystick;
-import edu.wpi.first.wpilibj.RobotDrive;
-
 //import org.usfirst.frc.team1899.robot.OI;
 import org.usfirst.frc.team1899.robot.Robot;
 import org.usfirst.frc.team1899.robot.RobotMap;
 import org.usfirst.frc.team1899.robot.commands.DriveCommand;
 
+import edu.wpi.first.wpilibj.Talon;
+import edu.wpi.first.wpilibj.command.Subsystem;
 /**
  *
  */
