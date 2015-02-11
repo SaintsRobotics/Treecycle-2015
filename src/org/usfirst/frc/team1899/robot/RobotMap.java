@@ -8,14 +8,14 @@ package org.usfirst.frc.team1899.robot;
  */
 public class RobotMap {
     
-    public static final int MOTOR_FRONT_LEFT = 2;
+    public static final int MOTOR_FRONT_LEFT = 2;  //0
     public static final int MOTOR_REAR_LEFT = 1;
     public static final int MOTOR_FRONT_RIGHT = 3;
-    public static final int MOTOR_REAR_RIGHT = 0;
+    public static final int MOTOR_REAR_RIGHT = 0;  //2
     
     public static final int WINCH = 4;
-    public static final int LEFT_WING = 5;
-    public static final int RIGHT_WING = 6;
+    public static final int LEFT_PICKUP = 5;
+    public static final int RIGHT_PICKUP = 6;
     
 	public static final int SWITCH_TOP = 0;
 	public static final int SWITCH_BOTTOM = 1;
