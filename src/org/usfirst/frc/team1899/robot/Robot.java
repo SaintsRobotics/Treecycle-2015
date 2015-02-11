@@ -7,6 +7,7 @@ import edu.wpi.first.wpilibj.livewindow.LiveWindow;
 
 import org.usfirst.frc.team1899.robot.subsystems.DriveSubsystem;
 import org.usfirst.frc.team1899.robot.subsystems.LifterSubsystem;
+import org.usfirst.frc.team1899.robot.subsystems.PickupSubsystem;
 
 /**
  * The VM is configured to automatically run this class, and to call the
@@ -19,11 +20,13 @@ public class Robot extends IterativeRobot {
 
     public static DriveSubsystem driveSubsystem;
     public static LifterSubsystem lifterSubsystem;
+    public static PickupSubsystem pickupSubsystem;
     public static OI oi;
 
     public void robotInit() {
         driveSubsystem = new DriveSubsystem();
         lifterSubsystem = new LifterSubsystem();
+        pickupSubsystem = new PickupSubsystem();
         oi = new OI();
     }
     
