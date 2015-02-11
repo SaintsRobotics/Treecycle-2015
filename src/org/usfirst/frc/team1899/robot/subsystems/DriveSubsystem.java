@@ -2,7 +2,6 @@ package org.usfirst.frc.team1899.robot.subsystems;
 
 import org.usfirst.frc.team1899.robot.RobotMap;
 import org.usfirst.frc.team1899.robot.commands.JoystickDriveCommand;
-import org.usfirst.frc.team1899.robot.commands.XboxDriveCommand;
 import org.usfirst.frc.team1899.robot.util.MathHelper;
 import org.usfirst.frc.team1899.robot.util.TalonMotor;
 
@@ -20,8 +19,8 @@ public class DriveSubsystem extends Subsystem {
     }
     
     public void setMecanumDrive(double x, double y, double rotation, double gyroAngle) {
-    	y = -y;
-    	
+        y = -y;
+        
         double rotated[] = MathHelper.rotateVector(x, y, gyroAngle);
         x = rotated[0];
         y = rotated[1];

@@ -7,14 +7,14 @@ package org.usfirst.frc.team1899.robot.util;
  */
 public class MathHelper {
     
-	/**
-	 * Rotates a vector in Cartesian space.
-	 * 
-	 * @param x The x component of the vector.
-	 * @param y The y component of the vector.
-	 * @param angle The angle to rotate by.
-	 * @return The rotated vector.
-	 */
+    /**
+     * Rotates a vector in Cartesian space.
+     * 
+     * @param x The x component of the vector.
+     * @param y The y component of the vector.
+     * @param angle The angle to rotate by.
+     * @return The rotated vector.
+     */
     public static double[] rotateVector(double x, double y, double angle) {
         double cosA = Math.cos(angle * (Math.PI / 180.0));
         double sinA = Math.sin(angle * (Math.PI / 180.0));
@@ -32,9 +32,9 @@ public class MathHelper {
     public static void normalize(double wheels[]) {
         double maxMagnitude = 0;
         for (int i=0;i<wheels.length;i++)
-        	maxMagnitude = Math.max(maxMagnitude, Math.abs(wheels[i]));
+            maxMagnitude = Math.max(maxMagnitude, Math.abs(wheels[i]));
         if (maxMagnitude <= 1.0)
-        	return;
+            return;
         for (int i=0;i<wheels.length;i++)
             wheels[i] = wheels[i] / maxMagnitude;
     }

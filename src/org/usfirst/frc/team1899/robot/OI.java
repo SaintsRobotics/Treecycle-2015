@@ -30,8 +30,8 @@ public class OI {
                 joystick = driveStick2;
                 break;
             case DRIVE_3:
-            	joystick = driveStick3;
-            	break;
+                joystick = driveStick3;
+                break;
             default:
                 return 0;
         }

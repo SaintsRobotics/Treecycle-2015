@@ -3,10 +3,10 @@ package org.usfirst.frc.team1899.robot.util;
 import edu.wpi.first.wpilibj.Talon;
 
 public class TalonMotor {
-	
-	Talon talon;
-	Ramp ramp;
-	
+    
+    Talon talon;
+    Ramp ramp;
+    
     public TalonMotor(int channel) {
         talon = new Talon(channel);
         ramp = new Ramp(0.5);
