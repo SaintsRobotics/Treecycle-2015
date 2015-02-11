@@ -1,6 +1,7 @@
 package org.usfirst.frc.team1899.robot.subsystems;
 
 import org.usfirst.frc.team1899.robot.RobotMap;
+import org.usfirst.frc.team1899.robot.commands.JoystickDriveCommand;
 import org.usfirst.frc.team1899.robot.commands.XboxDriveCommand;
 import org.usfirst.frc.team1899.robot.util.MathHelper;
 import org.usfirst.frc.team1899.robot.util.TalonMotor;
@@ -15,7 +16,7 @@ public class DriveSubsystem extends Subsystem {
     TalonMotor rearLeft = new TalonMotor(RobotMap.MOTOR_REAR_LEFT);
 
     public void initDefaultCommand() {
-        setDefaultCommand(new XboxDriveCommand());
+        setDefaultCommand(new JoystickDriveCommand());
     }
     
     public void setMecanumDrive(double x, double y, double rotation, double gyroAngle) {

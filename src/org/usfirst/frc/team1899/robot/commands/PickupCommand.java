@@ -6,14 +6,14 @@ import org.usfirst.frc.team1899.robot.Robot;
 
 import edu.wpi.first.wpilibj.command.Command;
 
-public class LifterCommand extends Command {
+public class PickupCommand extends Command {
 
-    public LifterCommand() {
-        requires(Robot.lifterSubsystem);
+    public PickupCommand() {
+        requires(Robot.pickupSubsystem);
     }
 
     protected void execute() {
-        Robot.lifterSubsystem.lift(Robot.oi.getAxisValue(Stick.DRIVE_3, Axis.LY));    //Stick 3 is XboX controller for operator
+        Robot.pickupSubsystem.pickup(Robot.oi.getAxisValue(Stick.DRIVE_3, Axis.TRIGGERS));    
     }
 
     protected boolean isFinished() {
