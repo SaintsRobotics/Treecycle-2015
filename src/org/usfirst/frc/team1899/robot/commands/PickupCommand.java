@@ -13,7 +13,7 @@ public class PickupCommand extends Command {
     }
 
     protected void execute() {
-        Robot.pickupSubsystem.pickup(Robot.oi.getAxisValue(Stick.DRIVE_3, Axis.TRIGGERS));    
+        Robot.pickupSubsystem.pickup(Robot.oi.getAxisValue(Stick.DRIVE_3, Axis.RT), Robot.oi.getAxisValue(Stick.DRIVE_3, Axis.LT));    
     }
 
     protected boolean isFinished() {

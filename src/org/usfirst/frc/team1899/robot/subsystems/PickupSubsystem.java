@@ -9,10 +9,12 @@ import edu.wpi.first.wpilibj.command.Subsystem;
 
 public class PickupSubsystem extends Subsystem {
     
-    SpeedController motor;
+    SpeedController motorLeft;
+    SpeedController motorRight;
     
     public PickupSubsystem() {
-        motor = new Talon(RobotMap.WINCH);
+        motorLeft = new Talon(RobotMap.LEFT_PICKUP);
+        motorRight= new Talon(RobotMap.RIGHT_PICKUP);
     }
     
     @Override
@@ -20,7 +22,8 @@ public class PickupSubsystem extends Subsystem {
         setDefaultCommand(new PickupCommand());
     }
     
-    public void pickup(double amount) {
-    	motor.set(amount);
+    public void pickup(double amountLeft, double amountRight) {
+    	motorLeft.set(amountLeft);
+    	motorRight.set(amountRight);
     }
 }
