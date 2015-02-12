@@ -9,22 +9,34 @@ import edu.wpi.first.wpilibj.command.Subsystem;
 
 public class DriveSubsystem extends Subsystem {
     
-    TalonMotor frontRight = new TalonMotor(RobotMap.MOTOR_FRONT_RIGHT);
-    TalonMotor frontLeft = new TalonMotor(RobotMap.MOTOR_FRONT_LEFT);
-    TalonMotor rearRight = new TalonMotor(RobotMap.MOTOR_REAR_RIGHT);
-    TalonMotor rearLeft = new TalonMotor(RobotMap.MOTOR_REAR_LEFT);
+    TalonMotor frontRight = new TalonMotor(RobotMap.MOTOR_FRONT_RIGHT,
+            RobotMap.ENCODER_FRONT_RIGHT_A, RobotMap.ENCODER_FRONT_RIGHT_B);
+    TalonMotor frontLeft = new TalonMotor(RobotMap.MOTOR_FRONT_LEFT,
+            RobotMap.ENCODER_FRONT_LEFT_A, RobotMap.ENCODER_FRONT_LEFT_A);
+    TalonMotor rearRight = new TalonMotor(RobotMap.MOTOR_REAR_RIGHT,
+            RobotMap.ENCODER_REAR_RIGHT_A, RobotMap.ENCODER_REAR_RIGHT_B);
+    TalonMotor rearLeft = new TalonMotor(RobotMap.MOTOR_REAR_LEFT,
+            RobotMap.ENCODER_REAR_LEFT_A, RobotMap.ENCODER_REAR_LEFT_B);
 
     public void initDefaultCommand() {
         setDefaultCommand(new JoystickDriveCommand());
     }
     
+    /**
+     * Does mecanum drive.
+     * 
+     * @param x the absolute x velocity
+     * @param y the absolute y velocity
+     * @param rotation the speed to rotate, from -1.0 to 1.0
+     * @param gyroAngle the gyro angle to adjust the headings to be absolute
+     */
     public void setMecanumDrive(double x, double y, double rotation, double gyroAngle) {
         y = -y;
         
         double rotated[] = MathHelper.rotateVector(x, y, gyroAngle);
         x = rotated[0];
         y = rotated[1];
-
+        
         double wheelSpeeds[] = new double[4];
         wheelSpeeds[0] =  x + y + rotation;
         wheelSpeeds[1] = -x + y - rotation;

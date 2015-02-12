@@ -19,6 +19,16 @@ public class RobotMap {
     
     public static final int SWITCH_TOP = 0;
     public static final int SWITCH_BOTTOM = 1;
+    
+    public static final int ENCODER_FRONT_RIGHT_A = 0;
+    public static final int ENCODER_FRONT_LEFT_A = 1;
+    public static final int ENCODER_REAR_RIGHT_A = 2;
+    public static final int ENCODER_REAR_LEFT_A = 3;
+    
+    public static final int ENCODER_FRONT_RIGHT_B = 4;
+    public static final int ENCODER_FRONT_LEFT_B = 5;
+    public static final int ENCODER_REAR_RIGHT_B = 6;
+    public static final int ENCODER_REAR_LEFT_B = 7;
 }
 
 // Front Left and Back Right are physically swapped on the robot.
