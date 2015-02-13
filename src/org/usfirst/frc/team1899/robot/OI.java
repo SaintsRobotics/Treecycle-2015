@@ -10,10 +10,10 @@ public class OI {
     
     Joystick driveStick1 = new Joystick(0);
     Joystick driveStick2 = new Joystick(1);
-    Joystick driveStick3 = new Joystick(2);
+    Joystick operatorStick = new Joystick(2);
     
     public enum Stick {
-        DRIVE_1, DRIVE_2, DRIVE_3;
+        DRIVE_1, DRIVE_2, OPERATOR;
     }
     
     public enum Axis {
@@ -26,11 +26,11 @@ public class OI {
             case DRIVE_1:
                 joystick = driveStick1;
                 break;
-            case  DRIVE_2:
+            case DRIVE_2:
                 joystick = driveStick2;
                 break;
-            case DRIVE_3:
-            	joystick = driveStick3;
+            case OPERATOR:
+            	joystick = operatorStick;
             	break;
             default:
                 return 0;

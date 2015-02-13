@@ -13,7 +13,7 @@ public class LifterCommand extends Command {
     }
 
     protected void execute() {
-        Robot.lifterSubsystem.lift(Robot.oi.getAxisValue(Stick.DRIVE_3, Axis.LY));    //Stick 3 is XboX controller for operator
+        Robot.lifterSubsystem.lift(Robot.oi.getAxisValue(Stick.OPERATOR, Axis.LY));
     }
 
     protected boolean isFinished() {
