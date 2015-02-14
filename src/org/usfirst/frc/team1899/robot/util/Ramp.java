@@ -11,7 +11,8 @@ public class Ramp {
     
     public double set(double newValue) {
         targetValue = newValue;
-        return get();
+        return targetValue;
+        //return get();
     }
     
     public double get() {

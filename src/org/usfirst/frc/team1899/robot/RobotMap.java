@@ -11,10 +11,12 @@ public class RobotMap {
     public static final int MOTOR_FRONT_LEFT = 5; // 0
     public static final int MOTOR_REAR_LEFT = 1;
     public static final int MOTOR_FRONT_RIGHT = 3;
-    public static final int MOTOR_REAR_RIGHT = 2; // 5
+    public static final int MOTOR_REAR_RIGHT = 0; // 5
+    
+    //Front left and back right physically switched on robot
     
     public static final int WINCH = 4;
-    public static final int LEFT_PICKUP = 0;
+    public static final int LEFT_PICKUP = 2;
     public static final int RIGHT_PICKUP = 6;
     
     public static final int SWITCH_TOP = 0;
