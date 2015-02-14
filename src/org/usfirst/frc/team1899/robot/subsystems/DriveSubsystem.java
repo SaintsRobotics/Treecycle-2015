@@ -12,7 +12,7 @@ public class DriveSubsystem extends Subsystem {
     TalonMotor frontRight = new TalonMotor(RobotMap.MOTOR_FRONT_RIGHT,
             RobotMap.ENCODER_FRONT_RIGHT_A, RobotMap.ENCODER_FRONT_RIGHT_B);
     TalonMotor frontLeft = new TalonMotor(RobotMap.MOTOR_FRONT_LEFT,
-            RobotMap.ENCODER_FRONT_LEFT_A, RobotMap.ENCODER_FRONT_LEFT_A);
+            RobotMap.ENCODER_FRONT_LEFT_A, RobotMap.ENCODER_FRONT_LEFT_B);
     TalonMotor rearRight = new TalonMotor(RobotMap.MOTOR_REAR_RIGHT,
             RobotMap.ENCODER_REAR_RIGHT_A, RobotMap.ENCODER_REAR_RIGHT_B);
     TalonMotor rearLeft = new TalonMotor(RobotMap.MOTOR_REAR_LEFT,
