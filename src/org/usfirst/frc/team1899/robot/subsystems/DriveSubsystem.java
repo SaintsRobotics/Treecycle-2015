@@ -44,9 +44,9 @@ public class DriveSubsystem extends Subsystem {
         wheelSpeeds[3] =  x + y - rotation;
 
         MathHelper.normalize(wheelSpeeds);
-        frontLeft.set(wheelSpeeds[0]);
-        frontRight.set(wheelSpeeds[1]);
-        rearLeft.set(wheelSpeeds[2]);
-        rearRight.set(wheelSpeeds[3]);
+//        frontLeft.set(wheelSpeeds[0]);
+//        frontRight.set(wheelSpeeds[1]);
+//        rearLeft.set(wheelSpeeds[2]);
+//        rearRight.set(wheelSpeeds[3]);
     }
 }
