@@ -16,6 +16,6 @@ public class Ramp {
     }
     
     public double get() {
-        return (Math.sin((targetValue-0.5)/Math.PI)+1)/2;
+        return (Math.sin(Math.PI*(targetValue-1.0/2.0))+1)/2;
     }
 }

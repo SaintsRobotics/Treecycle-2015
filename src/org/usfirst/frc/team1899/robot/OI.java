@@ -8,9 +8,9 @@ import edu.wpi.first.wpilibj.Joystick;
  */
 public class OI {
     
-    Joystick driveStick1 = new Joystick(1);
+    Joystick driveStick1 = new Joystick(0);
     Joystick driveStick2 = new Joystick(2);
-    Joystick operatorStick = new Joystick(0);
+    Joystick operatorStick = new Joystick(1);
     
     public enum Stick {
         DRIVE_1, DRIVE_2, OPERATOR;

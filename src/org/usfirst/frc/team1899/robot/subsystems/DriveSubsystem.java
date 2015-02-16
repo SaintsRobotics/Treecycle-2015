@@ -1,7 +1,10 @@
 package org.usfirst.frc.team1899.robot.subsystems;
 
+import org.usfirst.frc.team1899.robot.OI.Axis;
+import org.usfirst.frc.team1899.robot.OI.Stick;
+import org.usfirst.frc.team1899.robot.Robot;
 import org.usfirst.frc.team1899.robot.RobotMap;
-import org.usfirst.frc.team1899.robot.commands.JoystickDriveCommand;
+import org.usfirst.frc.team1899.robot.commands.XboxDriveCommand;
 import org.usfirst.frc.team1899.robot.util.MathHelper;
 import org.usfirst.frc.team1899.robot.util.TalonMotor;
 
@@ -10,16 +13,16 @@ import edu.wpi.first.wpilibj.command.Subsystem;
 public class DriveSubsystem extends Subsystem {
     
     TalonMotor frontRight = new TalonMotor(RobotMap.MOTOR_FRONT_RIGHT,
-            RobotMap.ENCODER_FRONT_RIGHT_A, RobotMap.ENCODER_FRONT_RIGHT_B);
+            RobotMap.ENCODER_FRONT_RIGHT_A, RobotMap.ENCODER_FRONT_RIGHT_B, true);
     TalonMotor frontLeft = new TalonMotor(RobotMap.MOTOR_FRONT_LEFT,
-            RobotMap.ENCODER_FRONT_LEFT_A, RobotMap.ENCODER_FRONT_LEFT_B);
+            RobotMap.ENCODER_FRONT_LEFT_A, RobotMap.ENCODER_FRONT_LEFT_B, true);
     TalonMotor rearRight = new TalonMotor(RobotMap.MOTOR_REAR_RIGHT,
-            RobotMap.ENCODER_REAR_RIGHT_A, RobotMap.ENCODER_REAR_RIGHT_B);
+            RobotMap.ENCODER_REAR_RIGHT_A, RobotMap.ENCODER_REAR_RIGHT_B, true);
     TalonMotor rearLeft = new TalonMotor(RobotMap.MOTOR_REAR_LEFT,
-            RobotMap.ENCODER_REAR_LEFT_A, RobotMap.ENCODER_REAR_LEFT_B);
+            RobotMap.ENCODER_REAR_LEFT_A, RobotMap.ENCODER_REAR_LEFT_B, false);
 
     public void initDefaultCommand() {
-        setDefaultCommand(new JoystickDriveCommand());
+        setDefaultCommand(new XboxDriveCommand());
     }
     
     /**
@@ -44,9 +47,9 @@ public class DriveSubsystem extends Subsystem {
         wheelSpeeds[3] =  x + y - rotation;
 
         MathHelper.normalize(wheelSpeeds);
-//        frontLeft.set(wheelSpeeds[0]);
-//        frontRight.set(wheelSpeeds[1]);
-//        rearLeft.set(wheelSpeeds[2]);
-//        rearRight.set(wheelSpeeds[3]);
+        frontLeft.set(wheelSpeeds[0]);
+        frontRight.set(wheelSpeeds[1]);
+        rearLeft.set(wheelSpeeds[2]);
+        rearRight.set(wheelSpeeds[3]);
     }
 }

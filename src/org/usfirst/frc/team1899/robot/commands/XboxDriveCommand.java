@@ -14,8 +14,8 @@ public class XboxDriveCommand extends Command {
 
     protected void execute() {
         Robot.driveSubsystem.setMecanumDrive(
-                Robot.oi.getAxisValue(Stick.DRIVE_1, Axis.LY),
                 Robot.oi.getAxisValue(Stick.DRIVE_1, Axis.LX),
+                Robot.oi.getAxisValue(Stick.DRIVE_1, Axis.LY),
                 Robot.oi.getAxisValue(Stick.DRIVE_1, Axis.RX), 0);
     }    
 
