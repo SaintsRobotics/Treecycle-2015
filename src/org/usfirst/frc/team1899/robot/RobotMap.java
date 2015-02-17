@@ -10,8 +10,8 @@ public class RobotMap {
     
     public static final int MOTOR_FRONT_LEFT = 0; // 0
     public static final int MOTOR_REAR_LEFT = 1;
-    public static final int MOTOR_FRONT_RIGHT = 3;
     public static final int MOTOR_REAR_RIGHT = 2; // 5
+    public static final int MOTOR_FRONT_RIGHT = 3;
     
     //Front left and back right physically switched on robot
     

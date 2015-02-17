@@ -1,8 +1,5 @@
 package org.usfirst.frc.team1899.robot.subsystems;
 
-import org.usfirst.frc.team1899.robot.OI.Axis;
-import org.usfirst.frc.team1899.robot.OI.Stick;
-import org.usfirst.frc.team1899.robot.Robot;
 import org.usfirst.frc.team1899.robot.RobotMap;
 import org.usfirst.frc.team1899.robot.commands.XboxDriveCommand;
 import org.usfirst.frc.team1899.robot.util.MathHelper;
