@@ -13,7 +13,7 @@ public class LifterSubsystem extends Subsystem {
     SpeedController motor;
     AnalogInput topSwitch;
     AnalogInput bottomSwitch;
-    
+        
     public LifterSubsystem() {
         motor = new Talon(RobotMap.WINCH);
         topSwitch = new AnalogInput(RobotMap.SWITCH_TOP);
@@ -34,6 +34,6 @@ public class LifterSubsystem extends Subsystem {
     }
     
     private boolean isOn(AnalogInput limitSwitch) {
-        return limitSwitch.getVoltage() > 2.5;
+        return limitSwitch.getVoltage() > 0.1;
     }
 }
