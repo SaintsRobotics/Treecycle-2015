@@ -19,7 +19,7 @@ public class TalonMotor {
     
     public void set(double val) {
         val = inverted ? -val : val;
-        val = ramp.set(val);
+        val = ramp.rampValues(val);
         talon.set(val);
     }
 }
