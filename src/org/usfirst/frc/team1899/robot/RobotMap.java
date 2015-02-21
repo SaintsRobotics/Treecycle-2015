@@ -16,6 +16,9 @@ public class RobotMap {
     //Front left and back right physically switched on robot
     
     public static final int WINCH = 4;
+    public static final int WINCH_ENCODER_A = 8;
+    public static final int WINCH_ENCODER_B = 9;
+    
     public static final int LEFT_PICKUP = 5;
     public static final int RIGHT_PICKUP = 6;
     

@@ -12,7 +12,7 @@ public class TalonMotor {
     
     public TalonMotor(int motorPin, int aChannel, int bChannel, boolean inv) {
         talon = new Talon(motorPin);
-        ramp = new Ramp(0.5);
+        ramp = new Ramp(0.01);
         encoder = new Encoder(aChannel, bChannel);
         inverted = inv;
     }
