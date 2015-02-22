@@ -2,8 +2,6 @@ package org.usfirst.frc.team1899.robot.util;
 
 /**
  * Contains utility methods for the robot.
- * 
- * @author Shreyas
  */
 public class MathHelper {
     
