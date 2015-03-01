@@ -13,8 +13,8 @@ public class PickupSubsystem extends Subsystem {
     SpeedController motorRight;
     
     public PickupSubsystem() {
-        motorLeft = new Talon(RobotMap.RIGHT_PICKUP);
-        motorRight= new Talon(RobotMap.LEFT_PICKUP);
+        motorLeft = new Talon(RobotMap.LEFT_PICKUP);
+        motorRight = new Talon(RobotMap.RIGHT_PICKUP);
     }
     
     @Override
@@ -24,6 +24,6 @@ public class PickupSubsystem extends Subsystem {
     
     public void pickup(double amountLeft, double amountRight) {
     	motorLeft.set(-amountLeft);
-    	motorRight.set(amountRight);
+    	motorRight.set(-amountRight);
     }
 }

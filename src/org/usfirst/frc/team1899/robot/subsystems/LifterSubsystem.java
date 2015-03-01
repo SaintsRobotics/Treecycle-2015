@@ -30,26 +30,29 @@ public class LifterSubsystem extends Subsystem {
     
     int errSum = 0;
     int lastInput = 0;
-    int setpoint = encoder.get();
+    int setpoint;
     double p = 0.5;
     double i = 0;
     double d = 0;
     
+    public void init() {
+        setpoint = encoder.get();
+    }
+    
     public void lift(double amount) {
         int input = encoder.get();
+        System.out.println(input);
         if (amount == 0) {
             int error = input - setpoint;
-            
             amount = p*error + i*errSum + d*(lastInput-input);
-            
             lastInput = input;
         } else {
             errSum = 0;
             setpoint = input;
         }
-        if (!isOn(topSwitch) && amount>0)
+        if (!isOn(bottomSwitch) && amount>0)
             motor.set(0);
-        else if (!isOn(bottomSwitch) && amount<0)
+        else if (!isOn(topSwitch) && amount<0)
             motor.set(0);
         else motor.set(amount);
     }

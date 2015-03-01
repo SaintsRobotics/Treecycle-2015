@@ -18,5 +18,4 @@ public class Ramp {
     	oldValue = newValue;
     	return newValue;
     }
-    
 }

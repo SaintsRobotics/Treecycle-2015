@@ -12,6 +12,10 @@ public class LifterCommand extends Command {
         requires(Robot.lifterSubsystem);
     }
 
+    protected void initialize() {
+        Robot.lifterSubsystem.init();
+    }
+    
     protected void execute() {
         Robot.lifterSubsystem.lift(Robot.oi.getAxisValue(Stick.OPERATOR, Axis.LY));
     }
@@ -20,7 +24,6 @@ public class LifterCommand extends Command {
         return false;
     }
 
-    protected void initialize() { }
     protected void end() { }
     protected void interrupted() {  }
 }
