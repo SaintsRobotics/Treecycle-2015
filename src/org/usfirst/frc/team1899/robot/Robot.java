@@ -1,6 +1,7 @@
 
 package org.usfirst.frc.team1899.robot;
 
+import edu.wpi.first.wpilibj.CameraServer;
 import edu.wpi.first.wpilibj.IterativeRobot;
 import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.livewindow.LiveWindow;
@@ -24,6 +25,7 @@ public class Robot extends IterativeRobot {
     public static OI oi;
 
     public void robotInit() {
+        CameraServer.getInstance().startAutomaticCapture();
         driveSubsystem = new DriveSubsystem();
         lifterSubsystem = new LifterSubsystem();
         pickupSubsystem = new PickupSubsystem();
