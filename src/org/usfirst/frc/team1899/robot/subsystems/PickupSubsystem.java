@@ -23,7 +23,7 @@ public class PickupSubsystem extends Subsystem {
     }
     
     public void pickup(double amountLeft, double amountRight) {
-    	motorLeft.set(-amountLeft);
-    	motorRight.set(-amountRight);
+    	motorLeft.set(amountLeft);
+    	motorRight.set(amountRight);
     }
 }

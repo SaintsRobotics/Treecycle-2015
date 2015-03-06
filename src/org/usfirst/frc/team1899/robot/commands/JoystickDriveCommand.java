@@ -24,7 +24,7 @@ public class JoystickDriveCommand extends Command {
                 Robot.oi.getAxisValue(Stick.DRIVE_1, Axis.X)*scale,
                 Robot.oi.getAxisValue(Stick.DRIVE_1, Axis.Y)*scale,
                 Robot.oi.getAxisValue(Stick.DRIVE_2, Axis.X)*scale, 0);
-    }    
+    }
 
     protected boolean isFinished() {
         return false;

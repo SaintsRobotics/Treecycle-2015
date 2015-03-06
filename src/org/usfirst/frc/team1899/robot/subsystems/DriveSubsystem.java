@@ -1,10 +1,11 @@
 package org.usfirst.frc.team1899.robot.subsystems;
 
+import org.usfirst.frc.team1899.robot.Robot;
 import org.usfirst.frc.team1899.robot.RobotMap;
-import org.usfirst.frc.team1899.robot.commands.JoystickDriveCommand;
 import org.usfirst.frc.team1899.robot.util.MathHelper;
 import org.usfirst.frc.team1899.robot.util.TalonMotor;
 
+import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Subsystem;
 
 public class DriveSubsystem extends Subsystem {
@@ -19,7 +20,10 @@ public class DriveSubsystem extends Subsystem {
             RobotMap.ENCODER_REAR_LEFT_A, RobotMap.ENCODER_REAR_LEFT_B, false);
 
     public void initDefaultCommand() {
-        setDefaultCommand(new JoystickDriveCommand());
+    }
+    
+    public void updateCommand() {
+        setDefaultCommand((Command)Robot.driveCommandSendable.getSelected());        
     }
     
     /**
