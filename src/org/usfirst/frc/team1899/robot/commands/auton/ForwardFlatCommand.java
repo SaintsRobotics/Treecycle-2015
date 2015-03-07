@@ -11,18 +11,26 @@ public class ForwardFlatCommand extends Command {
     
     public ForwardFlatCommand() {
         requires(Robot.driveSubsystem);
-        timer.start();
     }
 
+    protected void initialize() {
+        timer.start();        
+    }
+    
     protected void execute() {
-        Robot.driveSubsystem.setMecanumDrive(0.5, 0, 0, 0);
+        System.out.println("Exec : " + timer.get());
+        Robot.driveSubsystem.setMecanumDrive(0, 0.4, 0, 0); // y is inverted
     }
 
     protected boolean isFinished() {
-        return timer.get() < 1;
+        System.out.println("Final: " + timer.get());
+        return timer.get() > 3.5;
     }
 
-    protected void initialize() { }
-    protected void end() { }
+    protected void end() {
+        Robot.driveSubsystem.stop();
+        timer.stop();
+    }
+    
     protected void interrupted() {  }
 }

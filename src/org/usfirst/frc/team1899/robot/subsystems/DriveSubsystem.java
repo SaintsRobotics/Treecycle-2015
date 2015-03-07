@@ -26,6 +26,13 @@ public class DriveSubsystem extends Subsystem {
         setDefaultCommand((Command)Robot.driveCommandSendable.getSelected());        
     }
     
+    public void stop() {
+        frontLeft.stop();
+        frontRight.stop();
+        rearLeft.stop();
+        rearRight.stop();
+    }
+    
     /**
      * Does mecanum drive.
      * 

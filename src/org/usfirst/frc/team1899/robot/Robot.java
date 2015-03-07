@@ -4,6 +4,7 @@ package org.usfirst.frc.team1899.robot;
 import edu.wpi.first.wpilibj.CameraServer;
 import edu.wpi.first.wpilibj.IterativeRobot;
 import edu.wpi.first.wpilibj.Preferences;
+import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.livewindow.LiveWindow;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
@@ -35,7 +36,11 @@ public class Robot extends IterativeRobot {
     public static Preferences prefs;
 
     public void robotInit() {
-        CameraServer.getInstance().startAutomaticCapture();
+        try {
+            CameraServer.getInstance().startAutomaticCapture();
+        } catch(Exception e) {
+            System.out.println(e);
+        }
         driveSubsystem = new DriveSubsystem();
         lifterSubsystem = new LifterSubsystem();
         pickupSubsystem = new PickupSubsystem();
@@ -60,7 +65,10 @@ public class Robot extends IterativeRobot {
     public void teleopInit() {
         driveSubsystem.updateCommand();
     }
-    public void autonomousInit() { }
+    public void autonomousInit() { 
+        Command autonCommand = ((Command)autonCommandSendable.getSelected());
+        autonCommand.start();
+    }
     public void disabledInit() { }
     
     public void disabledPeriodic() {

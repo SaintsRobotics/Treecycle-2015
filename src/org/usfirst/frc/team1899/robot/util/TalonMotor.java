@@ -22,4 +22,8 @@ public class TalonMotor {
         val = ramp.rampValues(val);
         talon.set(val);
     }
+
+    public void stop() {
+        talon.set(0);
+    }
 }
