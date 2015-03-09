@@ -14,17 +14,15 @@ public class ForwardFlatCommand extends Command {
     }
 
     protected void initialize() {
-        timer.start();        
+        timer.start();
     }
     
     protected void execute() {
-        System.out.println("Exec : " + timer.get());
         Robot.driveSubsystem.setMecanumDrive(0, 0.4, 0, 0); // y is inverted
     }
 
     protected boolean isFinished() {
-        System.out.println("Final: " + timer.get());
-        return timer.get() > 3.5;
+        return timer.get() > 2.25;
     }
 
     protected void end() {
