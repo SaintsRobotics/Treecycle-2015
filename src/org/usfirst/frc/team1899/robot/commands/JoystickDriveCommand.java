@@ -14,12 +14,13 @@ public class JoystickDriveCommand extends Command {
     }
 
     protected void execute() {
-        double scale = 1-Robot.oi.getAxisValue(Stick.DRIVE_1, Axis.Z);
+        double scale = 0.7;
         if (Robot.oi.getButton(Stick.DRIVE_1, Button.TRIGGER) ||
-                Robot.oi.getButton(Stick.DRIVE_2, Button.TRIGGER) ||
-                Robot.oi.getButton(Stick.DRIVE_1, Button.B3) ||
+                Robot.oi.getButton(Stick.DRIVE_2, Button.TRIGGER))
+            scale = 1;
+        else if (Robot.oi.getButton(Stick.DRIVE_1, Button.B3) ||
                 Robot.oi.getButton(Stick.DRIVE_2, Button.B3))
-            scale *= 0.25;
+            scale = 0.25;
         Robot.driveSubsystem.setMecanumDrive(
                 Robot.oi.getAxisValue(Stick.DRIVE_1, Axis.X)*scale,
                 Robot.oi.getAxisValue(Stick.DRIVE_1, Axis.Y)*scale,

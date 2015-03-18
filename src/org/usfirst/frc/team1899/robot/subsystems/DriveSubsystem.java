@@ -60,4 +60,8 @@ public class DriveSubsystem extends Subsystem {
         rearLeft.set(wheelSpeeds[2]);
         rearRight.set(wheelSpeeds[3]);
     }
+
+    public void runAuton() {
+        setMecanumDrive(0.5, 0.01, 0.02, 0);
+    }
 }
