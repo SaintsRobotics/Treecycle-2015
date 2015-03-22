@@ -1,9 +1,9 @@
-package org.usfirst.frc.team1899.robot.commands;
+package com.saintsrobotics.treecycle.commands;
 
-import org.usfirst.frc.team1899.robot.OI.Axis;
-import org.usfirst.frc.team1899.robot.OI.Button;
-import org.usfirst.frc.team1899.robot.OI.Stick;
-import org.usfirst.frc.team1899.robot.Robot;
+import com.saintsrobotics.treecycle.OI.Axis;
+import com.saintsrobotics.treecycle.OI.Button;
+import com.saintsrobotics.treecycle.OI.Stick;
+import com.saintsrobotics.treecycle.Robot;
 
 /**
  * Controls the winch during teleop.

@@ -1,16 +1,12 @@
-package org.usfirst.frc.team1899.robot.commands.auton;
+package com.saintsrobotics.treecycle.commands.auton;
 
-import org.usfirst.frc.team1899.robot.Robot;
-
-import edu.wpi.first.wpilibj.Timer;
+import com.saintsrobotics.treecycle.Robot;
 
 /**
  * Drives the robot forward. Gets the minimum required 
  * 
  */
 public class ForwardDriveCommand extends TimedCommand {
-    
-    Timer timer = new Timer();
     
     public ForwardDriveCommand() {
         super(Robot.drive, 2000);

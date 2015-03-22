@@ -1,7 +1,7 @@
-package org.usfirst.frc.team1899.robot.subsystems;
+package com.saintsrobotics.treecycle.subsystems;
 
-import org.usfirst.frc.team1899.robot.RobotMap;
-import org.usfirst.frc.team1899.robot.commands.WinchCommand;
+import com.saintsrobotics.treecycle.RobotMap;
+import com.saintsrobotics.treecycle.commands.WinchCommand;
 
 import edu.wpi.first.wpilibj.AnalogInput;
 import edu.wpi.first.wpilibj.Encoder;

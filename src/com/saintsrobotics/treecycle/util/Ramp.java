@@ -1,4 +1,4 @@
-package org.usfirst.frc.team1899.robot.util;
+package com.saintsrobotics.treecycle.util;
 
 /**
  * A Ramp causes fast changes in input to be spread out
