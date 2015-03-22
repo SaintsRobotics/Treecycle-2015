@@ -1,36 +1,24 @@
 package org.usfirst.frc.team1899.robot.subsystems;
 
-import org.usfirst.frc.team1899.robot.Robot;
 import org.usfirst.frc.team1899.robot.RobotMap;
+import org.usfirst.frc.team1899.robot.commands.JoystickDriveCommand;
 import org.usfirst.frc.team1899.robot.util.MathHelper;
 import org.usfirst.frc.team1899.robot.util.TalonMotor;
 
-import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Subsystem;
 
+/**
+ * Handles the drivetrain of the robot.
+ */
 public class DriveSubsystem extends Subsystem {
     
-    TalonMotor frontRight = new TalonMotor(RobotMap.MOTOR_FRONT_RIGHT,
-            RobotMap.ENCODER_FRONT_RIGHT_A, RobotMap.ENCODER_FRONT_RIGHT_B, true);
-    TalonMotor frontLeft = new TalonMotor(RobotMap.MOTOR_FRONT_LEFT,
-            RobotMap.ENCODER_FRONT_LEFT_A, RobotMap.ENCODER_FRONT_LEFT_B, true);
-    TalonMotor rearRight = new TalonMotor(RobotMap.MOTOR_REAR_RIGHT,
-            RobotMap.ENCODER_REAR_RIGHT_A, RobotMap.ENCODER_REAR_RIGHT_B, true);
-    TalonMotor rearLeft = new TalonMotor(RobotMap.MOTOR_REAR_LEFT,
-            RobotMap.ENCODER_REAR_LEFT_A, RobotMap.ENCODER_REAR_LEFT_B, false);
+    TalonMotor frontRight = new TalonMotor(RobotMap.MOTOR_FRONT_RIGHT, true);
+    TalonMotor frontLeft = new TalonMotor(RobotMap.MOTOR_FRONT_LEFT, true);
+    TalonMotor rearRight = new TalonMotor(RobotMap.MOTOR_REAR_RIGHT, true);
+    TalonMotor rearLeft = new TalonMotor(RobotMap.MOTOR_REAR_LEFT, false);
 
     public void initDefaultCommand() {
-    }
-    
-    public void updateCommand() {
-        setDefaultCommand((Command)Robot.driveCommandSendable.getSelected());        
-    }
-    
-    public void stop() {
-        frontLeft.stop();
-        frontRight.stop();
-        rearLeft.stop();
-        rearRight.stop();
+        setDefaultCommand(new JoystickDriveCommand());
     }
     
     /**
@@ -60,8 +48,47 @@ public class DriveSubsystem extends Subsystem {
         rearLeft.set(wheelSpeeds[2]);
         rearRight.set(wheelSpeeds[3]);
     }
+    
+    /**
+     * Drives straight, adjusting for curve values from gyro.
+     * 
+     * @param speed The speed to drive.
+     * @param curve The value read from the gyro.
+     */
+    public void driveStraight(double speed, double curve) {
+        double leftOutput, rightOutput;
 
-    public void runAuton() {
-        setMecanumDrive(0.5, 0.01, 0.02, 0);
+        if (curve < 0) {
+            double value = Math.log(-curve);
+            double ratio = (value - 0.5) / (value + 0.5);
+            if (ratio == 0)
+                ratio = .0000000001;
+            leftOutput = speed / ratio;
+            rightOutput = speed;
+        } else if (curve > 0) {
+            double value = Math.log(curve);
+            double ratio = (value - 0.5) / (value + 0.5);
+            if (ratio == 0)
+                ratio = .0000000001;
+            leftOutput = speed;
+            rightOutput = speed / ratio;
+        } else {
+            leftOutput = speed;
+            rightOutput = speed;
+        }
+        frontLeft.set(leftOutput);
+        rearLeft.set(leftOutput);
+        frontRight.set(rightOutput);
+        frontRight.set(rightOutput);
+    }
+    
+    /**
+     * Force stops all of the drive motors.
+     */
+    public void stop() {
+        frontLeft.stop();
+        frontRight.stop();
+        rearLeft.stop();
+        rearRight.stop();
     }
 }

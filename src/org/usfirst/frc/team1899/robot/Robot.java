@@ -3,20 +3,16 @@ package org.usfirst.frc.team1899.robot;
 
 import edu.wpi.first.wpilibj.CameraServer;
 import edu.wpi.first.wpilibj.IterativeRobot;
-import edu.wpi.first.wpilibj.Preferences;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.livewindow.LiveWindow;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
-import org.usfirst.frc.team1899.robot.commands.JoystickDriveCommand;
-import org.usfirst.frc.team1899.robot.commands.XboxDriveCommand;
-import org.usfirst.frc.team1899.robot.commands.auton.ForwardFlatCommand;
-import org.usfirst.frc.team1899.robot.commands.auton.SpinCommand;
+import org.usfirst.frc.team1899.robot.commands.auton.ForwardDriveCommand;
 import org.usfirst.frc.team1899.robot.subsystems.DriveSubsystem;
-import org.usfirst.frc.team1899.robot.subsystems.LifterSubsystem;
-import org.usfirst.frc.team1899.robot.subsystems.PickupSubsystem;
+import org.usfirst.frc.team1899.robot.subsystems.GyroSubsystem;
+import org.usfirst.frc.team1899.robot.subsystems.WinchSubsystem;
 
 /**
  * The VM is configured to automatically run this class, and to call the
@@ -27,13 +23,13 @@ import org.usfirst.frc.team1899.robot.subsystems.PickupSubsystem;
  */
 public class Robot extends IterativeRobot {
 
-    public static DriveSubsystem driveSubsystem;
-    public static LifterSubsystem lifterSubsystem;
-    public static PickupSubsystem pickupSubsystem;
+    public static DriveSubsystem drive;
+    public static WinchSubsystem winch;
+    public static GyroSubsystem gyro;
     public static OI oi;
-    public static SendableChooser driveCommandSendable;
-    public static SendableChooser autonCommandSendable;
-    public static Preferences prefs;
+    
+    private SendableChooser autonCommandSendable;
+    private Command autonCommand;
 
     public void robotInit() {
         try {
@@ -41,45 +37,38 @@ public class Robot extends IterativeRobot {
         } catch(Exception e) {
             System.out.println(e);
         }
-        driveSubsystem = new DriveSubsystem();
-        lifterSubsystem = new LifterSubsystem();
-        pickupSubsystem = new PickupSubsystem();
+        drive = new DriveSubsystem();
+        winch = new WinchSubsystem();
+        gyro = new GyroSubsystem();
         oi = new OI();
         
-        driveCommandSendable = new SendableChooser();
-        driveCommandSendable.addDefault("Joystick Drive", new JoystickDriveCommand());
-        driveCommandSendable.addObject("Xbox Drive", new XboxDriveCommand());
-        SmartDashboard.putData("Drive mode", driveCommandSendable);
+        gyro.init();
         
         autonCommandSendable = new SendableChooser();
-        autonCommandSendable.addDefault("Forward, no platform", new ForwardFlatCommand());
-        autonCommandSendable.addObject("Spin", new SpinCommand());
+        autonCommandSendable.addDefault("Forward, no platform", new ForwardDriveCommand());
         SmartDashboard.putData("Auton mode", autonCommandSendable);
-        
-        prefs = Preferences.getInstance();
-        prefs.getInt("DRIVE_STICK_1", 0);
-        prefs.getInt("DRIVE_STICK_2", 1);
-        prefs.getInt("OP_STICK", 2);
+    }
+    
+    public void autonomousInit() {
+        autonCommand = (Command)autonCommandSendable.getSelected();
+        autonCommand.start();
     }
     
     public void teleopInit() {
-        driveSubsystem.updateCommand();
+        autonCommand.cancel();
     }
-    public void autonomousInit() { 
-        Command autonCommand = ((Command)autonCommandSendable.getSelected());
-        autonCommand.start();
-    }
+    
     public void disabledInit() { }
     
-    public void disabledPeriodic() {
+    public void autonomousPeriodic() {
         Scheduler.getInstance().run();
     }
     
     public void teleopPeriodic() {
         Scheduler.getInstance().run();
     }
-
-    public void autonomousPeriodic() {
+    
+    public void disabledPeriodic() {
         Scheduler.getInstance().run();
     }
     
