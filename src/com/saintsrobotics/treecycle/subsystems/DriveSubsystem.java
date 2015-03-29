@@ -56,6 +56,7 @@ public class DriveSubsystem extends Subsystem {
      * @param curve The value read from the gyro.
      */
     public void driveStraight(double speed, double curve) {
+        curve = -curve;
         double leftOutput, rightOutput;
 
         if (curve < 0) {
@@ -79,7 +80,7 @@ public class DriveSubsystem extends Subsystem {
         frontLeft.set(leftOutput);
         rearLeft.set(leftOutput);
         frontRight.set(rightOutput);
-        frontRight.set(rightOutput);
+        rearRight.set(rightOutput);
     }
     
     /**

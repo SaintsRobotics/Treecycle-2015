@@ -21,6 +21,11 @@ public class WinchCommand extends CommandBase {
     
     protected void execute() {
         double scale = Robot.oi.getButton(Stick.OPERATOR, Button.RB)? 1 : 0.6;
-        Robot.winch.lift(Robot.oi.getAxisValue(Stick.OPERATOR, Axis.LY)*scale);
+        if (Robot.oi.getButton(Stick.OPERATOR, Button.A))
+            Robot.winch.reset();
+        if (Robot.oi.getButton(Stick.OPERATOR, Button.B))
+            Robot.winch.lift(Robot.oi.getAxisValue(Stick.OPERATOR, Axis.LY)*scale);
+        else
+            Robot.winch.liftEncoder(Robot.oi.getAxisValue(Stick.OPERATOR, Axis.LY)*scale);
     }
 }

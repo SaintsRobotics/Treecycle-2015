@@ -1,6 +1,7 @@
 package com.saintsrobotics.treecycle;
 
-import com.saintsrobotics.treecycle.commands.auton.ForwardDriveCommand;
+import com.saintsrobotics.treecycle.commands.CameraCommand;
+import com.saintsrobotics.treecycle.commands.auton.PullTwoLandfillCommand;
 import com.saintsrobotics.treecycle.subsystems.DriveSubsystem;
 import com.saintsrobotics.treecycle.subsystems.GyroSubsystem;
 import com.saintsrobotics.treecycle.subsystems.WinchSubsystem;
@@ -31,11 +32,6 @@ public class Robot extends IterativeRobot {
     private Command autonCommand;
 
     public void robotInit() {
-        try {
-            CameraServer.getInstance().startAutomaticCapture();
-        } catch(Exception e) {
-            System.out.println(e);
-        }
         drive = new DriveSubsystem();
         winch = new WinchSubsystem();
         gyro = new GyroSubsystem();
@@ -44,20 +40,26 @@ public class Robot extends IterativeRobot {
         gyro.init();
         
         autonCommandSendable = new SendableChooser();
-        autonCommandSendable.addDefault("Forward, no platform", new ForwardDriveCommand());
+        autonCommandSendable.addDefault("Forward, no platform", new PullTwoLandfillCommand());
         SmartDashboard.putData("Auton mode", autonCommandSendable);
+        
+        //new CameraCommand().start();
+        CameraServer.getInstance().startAutomaticCapture();
     }
     
     public void autonomousInit() {
-        autonCommand = (Command)autonCommandSendable.getSelected();
+        autonCommand = new PullTwoLandfillCommand();
         autonCommand.start();
     }
     
     public void teleopInit() {
-        autonCommand.cancel();
+        if (autonCommand != null)
+            autonCommand.cancel();
     }
     
-    public void disabledInit() { }
+    public void disabledInit() {
+        Robot.winch.reset();
+    }
     
     public void autonomousPeriodic() {
         Scheduler.getInstance().run();

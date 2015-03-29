@@ -1,5 +1,7 @@
 package com.saintsrobotics.treecycle.subsystems;
 
+import com.saintsrobotics.treecycle.RobotMap;
+
 import edu.wpi.first.wpilibj.Gyro;
 import edu.wpi.first.wpilibj.command.Subsystem;
 
@@ -9,7 +11,7 @@ import edu.wpi.first.wpilibj.command.Subsystem;
  */
 public class GyroSubsystem extends Subsystem {
     
-    private Gyro gyro = new Gyro(0);
+    private Gyro gyro = new Gyro(RobotMap.GYRO);
     
     @Override
     protected void initDefaultCommand() { }
@@ -34,6 +36,6 @@ public class GyroSubsystem extends Subsystem {
     
     /** @return The rate of rotation of the gyro. */
     public double getRate() {
-        return gyro.getRate();
+        return 0;
     }
 }

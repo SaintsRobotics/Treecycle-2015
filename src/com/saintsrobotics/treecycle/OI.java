@@ -43,6 +43,10 @@ public class OI {
         Joystick joystick = getStick(stick);
         
         switch (button) {
+            case A:
+                return joystick.getRawButton(1);
+            case B:
+                return joystick.getRawButton(2);
             case RB:
                 return joystick.getRawButton(6);
             case LB:

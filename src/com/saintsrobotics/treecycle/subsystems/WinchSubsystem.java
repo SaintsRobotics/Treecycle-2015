@@ -3,11 +3,12 @@ package com.saintsrobotics.treecycle.subsystems;
 import com.saintsrobotics.treecycle.RobotMap;
 import com.saintsrobotics.treecycle.commands.WinchCommand;
 
-import edu.wpi.first.wpilibj.AnalogInput;
+import edu.wpi.first.wpilibj.DigitalInput;
 import edu.wpi.first.wpilibj.Encoder;
 import edu.wpi.first.wpilibj.SpeedController;
 import edu.wpi.first.wpilibj.Talon;
 import edu.wpi.first.wpilibj.command.Subsystem;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 /**
  * Handles the winch, which is a simple pulley system with 
@@ -20,8 +21,11 @@ public class WinchSubsystem extends Subsystem {
     
     private SpeedController motor = new Talon(RobotMap.WINCH);
     private Encoder encoder = new Encoder(RobotMap.WINCH_ENCODER_A, RobotMap.WINCH_ENCODER_B);
-    private AnalogInput topSwitch = new AnalogInput(RobotMap.SWITCH_TOP);
-    private AnalogInput bottomSwitch = new AnalogInput(RobotMap.SWITCH_BOTTOM);
+    private DigitalInput topSwitch = new DigitalInput(RobotMap.SWITCH_TOP);
+    private DigitalInput bottomSwitch = new DigitalInput(RobotMap.SWITCH_BOTTOM);
+    
+    public static final int ENCODER_BOUND_BOTTOM = 0;
+    public static final int ENCODER_BOUND_TOP = 10000;
     
     @Override
     protected void initDefaultCommand() {
@@ -30,34 +34,41 @@ public class WinchSubsystem extends Subsystem {
     
     /**
      * Moves the winch at the specified speed, unless the hook
-     * is at the top or bottom, calculated by the limit switches
-     * and by the encoder, if it exists.
+     * is at the top or bottom, calculated by the limit switches.
      * 
      * @param speed The speed to move the winch.
      */
     public void lift(double speed) {
-        if (encoder.getStopped()) {
-            if (!isOn(bottomSwitch) && speed>0)
-                motor.set(0);
-            else if (!isOn(topSwitch) && speed<0)
-                motor.set(0);
-            else motor.set(speed);
-        } else {
-            if (!isOn(bottomSwitch) && speed>0)
-                motor.set(0);
-            else if (!isOn(topSwitch) && speed<0)
-                motor.set(0);
-            else motor.set(speed);
-        }
+        speed = -speed;
+        if (speed>0 && !topSwitch.get())
+            motor.set(0);
+        else if (speed<0 && !bottomSwitch.get())
+            motor.set(0);
+        else motor.set(speed);
     }
     
     /**
-     * Internal method to tell if a limit switch in an analog port is on.
+     * Moves the winch at the specified speed, unless the hook
+     * is at the top or bottom, calculated by the limit switches
+     * and by the encoder.
      * 
-     * Analog ports measure the voltage of the input. This method checks
-     * the voltage and returns if the switch is pressed.
+     * @param speed The speed to move the winch.
      */
-    private boolean isOn(AnalogInput limitSwitch) {
-        return limitSwitch.getVoltage() > 0.1;
+    public void liftEncoder(double speed) {
+        speed = -speed;
+        SmartDashboard.putString("DB/String 0", String.valueOf(encoder.get()));
+        if (speed>0 && (!topSwitch.get() || encoder.get()>ENCODER_BOUND_TOP))
+            motor.set(0);
+        else if (speed<0 && (!bottomSwitch.get() || encoder.get()<ENCODER_BOUND_BOTTOM))
+            motor.set(0);
+        else motor.set(speed);
+    }
+    
+    public void reset() {
+        encoder.reset();
+    }
+
+    public void stop() {
+        motor.set(0);
     }
 }

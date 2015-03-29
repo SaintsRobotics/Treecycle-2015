@@ -14,9 +14,11 @@ public class RobotMap {
     public static final int MOTOR_FRONT_RIGHT = 3;
     
     public static final int WINCH = 4;
-    public static final int WINCH_ENCODER_A = 8;
-    public static final int WINCH_ENCODER_B = 9;
+    public static final int WINCH_ENCODER_A = 0;
+    public static final int WINCH_ENCODER_B = 1;
         
-    public static final int SWITCH_TOP = 0;
-    public static final int SWITCH_BOTTOM = 1;
+    public static final int SWITCH_BOTTOM = 2;
+    public static final int SWITCH_TOP = 3;
+    
+    public static final int GYRO = 0;
 }
